@@ -1,0 +1,139 @@
+Step: build-step-credential-initializer-78xtq:
+
+{"level":"warn","ts":1551089221.5237298,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1551089221.524385,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+Step: build-step-git-source-jstrachan-nodey51-master-44n4f:
+
+{"level":"warn","ts":1551089222.741871,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1551089224.7813094,"logger":"fallback-logger","caller":"git-init/main.go:90","msg":"Successfully cloned \"https://github.com/jstrachan/nodey51\" @ \"master\" in path \"/workspace/source\""}
+Step: build-step-place-tools:
+
+Step: build-step-setup-jx-git-credentials:
+
+Generated Git credentials file /home/jenkins/git/credentials
+Step: build-step-setversion-next-version:
+
+created new version: 1.0.1 and written to file: ./VERSION
+Tag v1.0.1 created and pushed to remote origin
+Step: build-step-build-npm-install:
+
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN REPLACE_ME@1.0.1 No repository field.
+npm WARN REPLACE_ME@1.0.1 No license field.
+
+up to date in 0.379s
+found 0 vulnerabilities
+
+Step: build-step-build-npm-test:
+
+
+> REPLACE_ME@1.0.1 test /workspace/source
+> echo "no test specified" && exit 0
+
+no test specified
+Step: build-step-build-container-build:
+
+time="2019-02-25T10:07:17Z" level=warning msg="config version (skaffold/v1beta2) out of date: upgrading to latest (skaffold/v1beta3)"
+Starting build...
+Building [changeme]...
+Sending build context to Docker daemon  127.5kB
+Step 1/6 : FROM node:9-slim
+9-slim: Pulling from library/node
+5bba3ecb4cd6: Pulling fs layer
+196b8e3c919d: Pulling fs layer
+7d083412657b: Pulling fs layer
+a88538b9cd05: Pulling fs layer
+e01bd28a434b: Pulling fs layer
+a88538b9cd05: Waiting
+e01bd28a434b: Waiting
+196b8e3c919d: Verifying Checksum
+196b8e3c919d: Download complete
+7d083412657b: Verifying Checksum
+7d083412657b: Download complete
+5bba3ecb4cd6: Verifying Checksum
+5bba3ecb4cd6: Download complete
+e01bd28a434b: Verifying Checksum
+e01bd28a434b: Download complete
+a88538b9cd05: Verifying Checksum
+a88538b9cd05: Download complete
+5bba3ecb4cd6: Pull complete
+196b8e3c919d: Pull complete
+7d083412657b: Pull complete
+a88538b9cd05: Pull complete
+e01bd28a434b: Pull complete
+Digest: sha256:288b29c1925d65b2d7d8701f8ada201e7dcd066438c0fb4299c35dff129b893f
+Status: Downloaded newer image for node:9-slim
+ ---> e20bb4abe4ee
+Step 2/6 : ENV PORT 8080
+ ---> Running in 68912c5e0b06
+ ---> 4f8b2e2daff6
+Step 3/6 : EXPOSE 8080
+ ---> Running in cd03f09cfe3b
+ ---> fc23c7c2152b
+Step 4/6 : WORKDIR /usr/src/app
+ ---> 4d6136780006
+Step 5/6 : COPY . .
+ ---> 6397807ed250
+Step 6/6 : CMD npm start
+ ---> Running in 9ad08ef305ad
+ ---> 79ac63f51325
+Successfully built 79ac63f51325
+The push refers to a repository [10.35.249.124:5000/jstrachan/nodey51]
+0284f336fee6: Preparing
+fa433105456f: Preparing
+e16c226cf2a8: Preparing
+7fd597d009e4: Preparing
+7c6ab5fb7059: Preparing
+ed271eac23e9: Preparing
+156ff16f37e4: Preparing
+ed271eac23e9: Waiting
+156ff16f37e4: Waiting
+7fd597d009e4: Layer already exists
+7c6ab5fb7059: Pushed
+0284f336fee6: Pushed
+ed271eac23e9: Pushed
+156ff16f37e4: Layer already exists
+fa433105456f: Pushed
+e16c226cf2a8: Pushed
+1.0.1: digest: sha256:c593b17930c3f1d47f956f2d28d671055ab67cfb8cfecee72101314288bf1016 size: 1786
+Build complete in 14.295732636s
+Starting test...
+Test complete in 4.259µs
+changeme -> 10.35.249.124:5000/jstrachan/nodey51:1.0.1
+There is a new version (0.23.0) of skaffold available. Download it at https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64
+
+Step: build-step-build-post-build:
+
+no CVE provider running in the current jx namespace so skip adding image to be analysed
+Step: build-step-promote-changelog:
+
+Converted /workspace/source/charts/nodey51 to an unshallow repository
+Generating change log from git ref 91206ba829592849929d4ac8413e592e1984dafc => bc59af3f45c2c657f92a56db9a17fd7a7631672f
+Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+Failed to enrich commits with issues: User.jenkins.io "" is invalid: metadata.name: Required value: name or generateName is required
+Finding issues in commit messages using git format
+No release found for jstrachan/nodey51 and tag v1.0.1 so creating a new release
+Updated the release information at https://github.com/jstrachan/nodey51/releases/tag/v1.0.1
+generated: /workspace/source/charts/nodey51/templates/release.yaml
+Created Release nodey51-1-0-1 resource in namespace jx
+Updating PipelineActivity jstrachan-nodey51-master-3 with version 1.0.1
+Updated PipelineActivities jstrachan-nodey51-master-3 with release notes URL: https://github.com/jstrachan/nodey51/releases/tag/v1.0.1
+Step: build-step-promote-helm-release:
+
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x http://chartmuseum.jenkins-x.io
+Successfully added Helm repository jenkins-x.
+Adding missing Helm repo: releases http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository releases.
+No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Uploading chart file nodey51-1.0.1.tgz to http://jenkins-x-chartmuseum:8080/api/charts
+Received 201 response: {"saved":true}
+Step: build-step-promote-jx-promote:
+
+prow based install so skip waiting for the merge of Pull Requests to go green as currently there is an issue with gettingstatuses from the PR, see https://github.com/jenkins-x/jx/issues/2410
+Promoting app nodey51 version 1.0.1 to namespace jx-staging
+Created Pull Request: https://github.com/jstrachan/environment-jstrachan-t5-staging/pull/4
+
+Pull Request https://github.com/jstrachan/environment-jstrachan-t5-staging/pull/4 is merged at sha cde1146df676ee5c757c4afe2eada97c7a472647
+Pull Request merged but we are not waiting for the update pipeline to complete!
+Could not find the service URL in namespace jx-staging for names nodey51, jx-nodey51, jx-staging-nodey51
